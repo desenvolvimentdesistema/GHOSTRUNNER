@@ -4,15 +4,19 @@
              x:Class="GHOSTRUNNER.MainPage"
              Shell.NavBarIsVisible="false">
     <Grid>
-        <Image Source="ceu.png"
-               Aspect="AspectFill"
-               HorizontalOptions="Fill"
-               VerticalOptions="Fill"/>
+       <HorizontalStackLayout x:Name="Layer1">
+              <Image Source="ceu.png"
+                     Aspect="Fill"
+                     HorizontalOptions="Fill"
+                     VerticalOptions="Fill"/>
+                     </HorizontalStackLayout>
 
-        <Image Source="casa.png"
-               Aspect="AspectFill"
-               HorizontalOptions="Fill"
-               VerticalOptions="Fill"/>
+       <HorizontalStackLayout x:Name="Layer2">
+              <Image Source="casa.png"
+                     Aspect="AspectFill"
+                     HorizontalOptions="Fill"
+                     VerticalOptions="Fill"/>
+                     </HorizontalStackLayout>
 
         <Image Source="chao.png"
                Aspect="AspectFill"
