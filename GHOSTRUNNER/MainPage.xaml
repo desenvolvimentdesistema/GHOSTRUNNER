@@ -3,29 +3,60 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GHOSTRUNNER.MainPage"
              Shell.NavBarIsVisible="false">
-    <Grid>
-       <HorizontalStackLayout x:Name="Layer1">
-              <Image Source="ceu.png"
-                     Aspect="Fill"
-                     HorizontalOptions="Fill"
-                     VerticalOptions="Fill"/>
-                     </HorizontalStackLayout>
 
-       <HorizontalStackLayout x:Name="Layer2">
-              <Image Source="casa.png"
-                     Aspect="AspectFill"
-                     HorizontalOptions="Fill"
-                     VerticalOptions="Fill"/>
-                     </HorizontalStackLayout>
+       <Grid>
+              <HorizontalStackLayout x:Name="Layer1">
+                     <Image Source="ceu.png"
+                            Aspect="Fill"
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Fill"/>
+                     <Image Source="ceu.png"
+                            Aspect="Fill"
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Fill"/>
+                     <Image Source="background.png"
+                            Aspect="Fill"
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Fill"/>
+              </HorizontalStackLayout>
 
-        <Image Source="chao.png"
-               Aspect="AspectFill"
-               HorizontalOptions="Fill"
-               VerticalOptions="Fill"/>
+              <HorizontalStackLayout x:Name="Layer2">
+                     <Image Source="casa.png"
+                            Aspect="Fill"
+                            HorizontalOptions="End"
+                            VerticalOptions="Fill"/>
+                     <Image Source="predios.png"
+                            Aspect="Fill"
+                            HorizontalOptions="End"
+                            VerticalOptions="Fill"/>
+                     <Image Source="casa.png"
+                            Aspect="Fill"
+                            HorizontalOptions="End"
+                            VerticalOptions="Fill"/>
+              </HorizontalStackLayout>
 
-        <Image Source="coragem.png"
-               Aspect="AspectFill"
-               HorizontalOptions="Fill"
-               VerticalOptions="Fill"/>
-    </Grid>
+              <HorizontalStackLayout x:Name="Layer3">
+                     <Image Source="chao.png"
+                            Aspect="AspectFill"
+                            HorizontalOptions="End"
+                            VerticalOptions="End"
+                            HeightRequest="80"/>
+                     <Image Source="chao.png"
+                            Aspect="AspectFill"
+                            HorizontalOptions="End"
+                            VerticalOptions="End"
+                            HeightRequest="80"/>
+                     <Image Source="chao.png"
+                            Aspect="AspectFill"
+                            HorizontalOptions="End"
+                            VerticalOptions="End"
+                            HeightRequest="80"/>
+              </HorizontalStackLayout>
+
+
+
+
+
+       </Grid>
+
 </ContentPage>

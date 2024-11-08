@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GHOSTRUNNER")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+ed080634b571feb3f2f5331d3a7cba1a8bb194df")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+5c15d4166cd4d6f190297acc9fec13560d803d4d")]
 [assembly: System.Reflection.AssemblyProductAttribute("GHOSTRUNNER")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GHOSTRUNNER")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

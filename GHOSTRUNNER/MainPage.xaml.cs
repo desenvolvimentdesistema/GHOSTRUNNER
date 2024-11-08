@@ -19,6 +19,8 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
 		InitializeComponent();
+		Player = new Player(imgPlayer);
+		Player.Run();
 	}
 
 	protected override void OnSizeAllocated(double w, double h)
@@ -38,11 +40,11 @@ public partial class MainPage : ContentPage
 
 	void CorrigeTamanhoCenario(double w, double h)
 	{
-		foreach(var A in Layer1.Chidren)
+		foreach(var A in Layer1.Children)
 		(A as Image).WidthRequest = w;
-		foreach(var A in Layer2.Chidren)
+		foreach(var A in Layer2.Children)
 		(A as Image).WidthRequest = w;
-		foreach(var A in Layer3.Chidren)
+		foreach(var A in Layer3.Children)
 		(A as Image).WidthRequest = w;
 
 		Layer1.WidthRequest = w * 1.5;
@@ -69,7 +71,7 @@ public partial class MainPage : ContentPage
 
 	void GerenciaCenarios(HorizontalStackLayout HSL)
 	{
-		var view = (HSL.Chidren.First() as Image);
+		var view = (HSL.Children.First() as Image);
 		if (view.WidthRequest + HSL.TranslationX < 0)
 		{
 			HSL.Children.Remove(view);
@@ -82,7 +84,8 @@ public partial class MainPage : ContentPage
 	{
 		while(!EstaMorto)
 		{
-			GerenciaCenarios()
+			GerenciaCenarios();
+			PlayerDesenha();
 			await Task.Delay(TempoEntreFrames);
 		}
 	}
@@ -92,5 +95,6 @@ public partial class MainPage : ContentPage
         base.OnAppearing();
 		Desenha();
     }
+	
 }
 
