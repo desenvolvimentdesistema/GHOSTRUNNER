@@ -1,14 +1,15 @@
-using System.Linq.Expressions;
+using Microsoft.Maui.Platform;
 
+namespace GHOSTRUNNER;
 public delegate void Callback();
 public class Player : Animacao
 {
     public Player(Image A) : base(A)
     {
-        for (int i =1; i<=; ++i)
-            Animacao1.Add($" {i.ToString("D2")}.png");
-        for (int i =1; i<=; ++i)
-            Animacao2.Add($" {i.ToString("D2")}.png");
+        for (int i = 1; i <= 4; ++i)
+            Animacao1.Add($"player{i.ToString("D2")}.png");
+        for (int i = 1; i <= 6; ++i)
+            Animacao2.Add($"playerdead{i.ToString("D2")}.png");
         
         SetAnimacaoAtiva(1);
     }
@@ -23,6 +24,21 @@ public class Player : Animacao
 	{
 		Loop = true;
 		SetAnimacaoAtiva(1);
-		Player()
+		Play();
 	}
+
+    public void MoveY(int s)
+    {
+        imageView.TranslationY += s;
+    }
+
+    public double GetY()
+    {
+        return imageView.TranslationY;
+    }
+
+    public void SetY(double a)
+    {
+        imageView.TranslationY = a;
+    }
 }
