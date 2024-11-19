@@ -1,4 +1,5 @@
 namespace GHOSTRUNNER;
+using FFImageLoading.Maui;
 
 public class Animacao
 {

@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GHOSTRUNNER.MainPage"
+             xmlns:FF="CLR-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
              Shell.NavBarIsVisible="false">
 
        <Grid>
@@ -53,9 +54,15 @@
                             HeightRequest="80"/>
               </HorizontalStackLayout>
 
-
-
-
+              <FF:CachedImageView Source="runningcat01.png"
+                                  CacheType="Disk"
+                                  CacheDuration="365"
+                                  x:Name="ImagePlayer"
+                                  Margin="10,0,0,80"
+                                  HeightRequest="150"
+                                  WidthRequest="100"
+                                  HorizontalOptions="Start"
+                                  VerticalOptions="End"/>
 
        </Grid>
 

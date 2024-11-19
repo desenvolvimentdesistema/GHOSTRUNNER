@@ -1,5 +1,5 @@
-﻿using Microsoft.Maui.Platform;
-using Microsoft.VisualBasic;
+﻿using Microsoft.VisualBasic;
+using FFImageLoading.Maui;
 
 namespace GHOSTRUNNER;
 
@@ -14,20 +14,21 @@ public partial class MainPage : ContentPage
 	int Velocidade = 0;
 	int LarguraJanela = 0;
 	int AlturaJanela = 0;
-	const int ForcaGravidade=6;
-	bool EstaNoChao=true;
-	bool EstaNoAr=false;
-	int TempoPulando=0;
-	int TempoNoAr=0;
-	const int ForcaPulo=8;
-	const int MaxTempoPulando=6;
-	const int MaxTempoNoAr=4;
+	const int ForcaGravidade = 6;
+	bool EstaNoChao = true;
+	bool EstaNoAr = false;
+	int TempoPulando = 0;
+	int TempoNoAr = 0;
+	const int ForcaPulo = 8;
+	const int MaxTempoPulando = 6;
+	const int MaxTempoNoAr = 4;
+	Player Player;
 
 
 	public MainPage()
 	{
 		InitializeComponent();
-		Player = new Player(imgPlayer);
+		Player = new Player(ImagePlayer);
 		Player.Run();
 	}
 
@@ -49,11 +50,11 @@ public partial class MainPage : ContentPage
 	void CorrigeTamanhoCenario(double w, double h)
 	{
 		foreach(var A in Layer1.Children)
-		(A as Image).WidthRequest = w;
+			(A as Image).WidthRequest = w;
 		foreach(var A in Layer2.Children)
-		(A as Image).WidthRequest = w;
+			(A as Image).WidthRequest = w;
 		foreach(var A in Layer3.Children)
-		(A as Image).WidthRequest = w;
+			(A as Image).WidthRequest = w;
 
 		Layer1.WidthRequest = w * 1.5;
 		Layer2.WidthRequest = w * 1.5;
@@ -63,28 +64,26 @@ public partial class MainPage : ContentPage
 	void GerenciaCenarios()
 	{
 		MoveCenario();
-		GerenciaCenarios(HSLayer1); 
-		GerenciaCenarios(HSLayer2);
-		GerenciaCenarios(HSLayer3);
-		GerenciaCenarios(HSLayerChao); 
+		GerenciaCenarios(Layer1); 
+		GerenciaCenarios(Layer2);
+		GerenciaCenarios(Layer3); 
 	}
 
 	void MoveCenario()
 	{
-		HSLayer1.TranlationX -= Velocidade1;
-		HSLayer2.TranlationY -= Velocidade2;
-		HSLayer3.TranlationX -= Velocidade3;
-		HSLayerChao.TranlationX -= Velocidade;
+		Layer1.TranlationX -= Velocidade1;
+		Layer2.TranlationY -= Velocidade2;
+		Layer3.TranlationX -= Velocidade3;
 	}
 
-	void GerenciaCenarios(HorizontalStackLayout HSL)
+	void GerenciaCenarios(HorizontalStackLayout HorizontalStackLayout)
 	{
-		var view = (HSL.Children.First() as Image);
-		if (view.WidthRequest + HSL.TranslationX < 0)
+		var view = (HorizontalStackLayout.Children.First() as Image);
+		if (view.WidthRequest + HorizontalStackLayout.TranslationX < 0)
 		{
-			HSL.Children.Remove(view);
-			HSL.Children.Add(view);
-			HSL.TranslationX = view.TranslationX;
+			HorizontalStackLayout.Children.Remove(view);
+			HorizontalStackLayout.Children.Add(view);
+			HorizontalStackLayout.TranslationX = view.TranslationX;
 		}
 	}
 
@@ -101,38 +100,40 @@ public partial class MainPage : ContentPage
 		await Task.Delay(TempoEntreFrames);
 	}
 
+	void AplicaGravidade()
+	{
+		if(Player.GetY()<0)
+			Player.MoveY(ForcaGravidade);
+		else if(Player.GetY() >= 0)
+		{
+			Player.SetY(0);
+			EstaNoChao = true;
+		}
+	}
+
     protected override void OnAppearing()
     {
         base.OnAppearing();
 		Desenha();
     }
 
-	void AplicaGravidade()
-	{
-		if(Player.GetY()<0)
-			Player.MoveY(ForcaGravidade);
-		else if(Player.GetY()>=0)
-		{
-			Player.SetY(0);
-			EstaNoChao=true;
-		}
-	}
+
 
 	void AplicaPulo()
 	{
-		EstaNoChao=false;
+		EstaNoChao = false;
 		if(EstaPulando && TempoPulando >= MaxTempoPulando)
 		{
-			EstaPulando=false;
-			EstaNoAr=true;
-			TempoNoAr=0;
+			EstaPulando = false;
+			EstaNoAr = true;
+			TempoNoAr = 0;
 		}
 		else if(EstaNoAr && TempoNoAr >= MaxTempoNoAr)
 		{
-			EstaPulando=false;
-			EstaNoAr=false;
-			TempoPulando=0;
-			TempoNoAr=0;
+			EstaPulando = false;
+			EstaNoAr = false;
+			TempoPulando = 0;
+			TempoNoAr = 0;
 		}
 
 		else if(EstaPulando && TempoPulando < MaxTempoPulando)
@@ -148,7 +149,7 @@ public partial class MainPage : ContentPage
 	void OnGridTapped(object o, TappedEventArgs a)
 	{
 		if(EstaNoChao)
-			EstaPulando=true;
+			EstaPulando = true;
 	}
 	
 }
